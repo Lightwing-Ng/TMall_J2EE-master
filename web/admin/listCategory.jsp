@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@include file="../include/admin/adminHeader.jsp" %>
-<%@include file="../include/admin/adminNavigator.jsp" %>
+<%@ include file="../include/admin/adminHeader.jsp" %>
+<%@ include file="../include/admin/adminNavigator.jsp" %>
 
 <script>
     $(function () {
@@ -11,7 +11,6 @@
             return checkEmpty("categoryPic", "分类图片");
         });
     });
-
 </script>
 
 <title>分类管理</title>
@@ -88,7 +87,6 @@
             </form>
         </div>
     </div>
-
 </div>
 
 <%@include file="../include/admin/adminFooter.jsp" %>
