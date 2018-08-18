@@ -1041,7 +1041,7 @@ CREATE INDEX fk_orderitem_user
 
 登录页面采集用户的账号和密码
 
-![登录页面]()
+![登录页面](img/登陆页面.png)
 
 ```sql
 CREATE TABLE tmall.user
@@ -1058,7 +1058,7 @@ CREATE TABLE tmall.user
 
 首页的竖状导航栏显示所有 17 种分类信息
 
-![左侧竖向导航栏]()
+![左侧竖向导航栏](img/纵向导航栏.png)
 
 ```sql
 CREATE TABLE tmall.category
@@ -1689,7 +1689,7 @@ CREATE INDEX fk_propertyvalue_property
 2. 与 `User` 的多对一关系 
 3. 与 `Product` 的多对一关系
 
-![发布评价]()
+![发布评价](img/评价页面.png)
 
 ```java
 package tmall.bean;
@@ -2437,7 +2437,7 @@ public class UserDAO {
 
 4. 相关界面功能截图-注册验证账号是否重复
 
-![注册页面]()
+![注册页面](img/注册页面.png)
 
 ### 5.5 PropertyDAO
 
