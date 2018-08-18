@@ -1,5 +1,4 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false" %>
-
 <%@ include file="modal.jsp" %>
 
 <div id="footer" class="footer" style="display: block;">
@@ -87,7 +86,7 @@
         </div>
 
         <div class="license">
-            <span>增值电信业务经营许可证： 浙B2-20110446</span>
+            <span>增值电信业务经营许可证：浙B2-20110446</span>
             <span>网络文化经营许可证：浙网文[2015]0295-065号</span>
             <span>互联网医疗保健信息服务 审核同意书 浙卫网审【2014】6号 </span>
             <span>互联网药品信息服务资质证书编号：浙-（经营性）-2012-0005</span>

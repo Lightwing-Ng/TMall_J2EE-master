@@ -2,8 +2,7 @@
 
 <nav class="top ">
     <a href="${contextPath}">
-        <span style="color:#C40000; margin:0" class=" glyphicon glyphicon-home redColor">
-        </span>
+        <span style="color:#C40000; margin:0" class=" glyphicon glyphicon-home redColor"></span>
         天猫首页
     </a>
 

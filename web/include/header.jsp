@@ -13,10 +13,10 @@
     <link href="css/fore/style.css" rel="stylesheet">
     <script>
         function formatMoney(num) {
-            num = num.toString().replace(/\$|\,/g, '');
+            num = num.toString().replace(/[$,]/g, '');
             if (isNaN(num))
                 num = "0";
-            sign = (num == (num = Math.abs(num)));
+            sign = (num === (num = Math.abs(num)));
             num = Math.floor(num * 100 + 0.50000000001);
             cents = num % 100;
             num = Math.floor(num / 100).toString();
@@ -69,4 +69,3 @@
     </script>
 </head>
 <body>
-

@@ -89,8 +89,3 @@
     <div class="carouselBackgroundDiv">
     </div>
 </div>
-
-
-
-
-
