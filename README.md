@@ -740,7 +740,7 @@ CREATE DATABASE tmall DEFAULT CHARACTER SET utf8;
 
 在这张表关系图上，列出了模仿天猫整站一共需要用到的 9 张表，以及表之间的关系。接下来，对每张表做介绍，并讲解表与表之间的关系
 
-![DataBase](DataBase.png)
+![DataBase](img/DataBase.png)
 
 2. 表    
 
@@ -773,7 +773,7 @@ CREATE DATABASE tmall DEFAULT CHARACTER SET utf8;
 
 所以分类和产品之间的关系是一对多
 
-![表的关系](DataBase.png)
+![表的关系](img/DataBase.png)
 
 4. 表关系    
 
