@@ -3931,7 +3931,7 @@ public class ProductDAO {
 
 2. 分类管理
 
-![分类管理]()
+![分类管理](img/分类管理.png)
 
 3. 属性管理
 
@@ -3968,7 +3968,7 @@ public class ProductDAO {
 
 为了便于大家理解和消化这部分知识，采用如下节奏进行 
 1. 首先下载一个只有分类管理的可运行项目，先跑起来看看效果 
-2. 理解 BackServletFilter + BaseBackServlet 这种设计模式 
+2. 理解 `BackServletFilter` + `BaseBackServlet` 这种设计模式 
 3. 再以查询为例子，运用这种设计模式，并且分析其带来的好处 
 4. 分页功能单独拿出来讲解 
 5. 最后讲解分类管理中其他的，增加，删除，编辑和修改功能
@@ -3976,13 +3976,13 @@ public class ProductDAO {
 #### 7.1.2 可运行的项目
 
 1. 可运行项目    
-2. 在tomcat中配置tmall    
-3. 启动Tomcat并观察效果    
+2. 在 tomcat 中配置 tmall    
+3. 启动 Tomcat 并观察效果    
 4. tomcat 启动失败
 
-如果tomcat启动失败，通常是因为 8080 端口被占用了，有可能是 Oracle 占用了 8080 端口，关闭掉Oracle即可。
+如果 tomcat 启动失败，通常是因为 8080 端口被占用了，有可能是 Oracle 占用了 8080 端口，关闭掉 Oracle 即可。
 
-如果不是 Oracle 占用，按照如下办法排查，并关闭对应程序： Tomcat端口被占用怎么办
+如果不是 Oracle 占用，按照如下办法排查，并关闭对应程序： Tomcat 端口被占用怎么办
 
 #### 7.1.3 静态资源
 
@@ -4031,7 +4031,7 @@ js 目录下有两个子目录
 `http://127.0.0.1:8080/tmall/admin_category_list`
 
 可以发现，分类管理需要：增加、删除、编辑、修改和查询 5 个服务端功能。 
-那么按照传统的在 web.xml 中配置 Servlet 的方式，一个路径对应一个 Servlet 的思路，就需要设计 5 个 Servlet 类，并且在 web.xml 中配置5个路径
+那么按照传统的在 web.xml 中配置 Servlet 的方式，一个路径对应一个 Servlet 的思路，就需要设计 5 个 Servlet 类，并且在 web.xml 中配置 5 个路径
 
 `AddCategoryServlet`
 `DeleteCategoryServlet`
@@ -4043,7 +4043,7 @@ js 目录下有两个子目录
 
 2. 对设计进行改进
 
-但是观察已经实现了分类管理的可运行项目下载包里的代码，却发现 Servlet 只有一个即 CategoryServlet，在 web.xml 里，也只有一个 CategoryServlet 的映射，并没有 5 个映射。
+但是观察已经实现了分类管理的可运行项目下载包里的代码，却发现 Servlet 只有一个即 `CategoryServlet`，在 web.xml 里，也只有一个 CategoryServlet 的映射，并没有 5 个映射。
 
 如图是对于最后完工了的项目的 servlet 包里类的截图，可以发现，每种实体类，对应了一个 Servlet，而不是对应了 5 个，这样首先从 Servlet 数量上来讲，就大大的减少了
 
@@ -4091,7 +4091,7 @@ public class BackServletFilter implements Filter {
 }
 ```
 
-5. 代码讲解: CategoryServlet 和 BaseBackServlet
+5. 代码讲解: `CategoryServlet` 和 `BaseBackServlet`
 
 ```java
 public class CategoryServlet extends BaseBackServlet {
@@ -4493,12 +4493,12 @@ function checkInt(id, name){
 
 - 对于删除超链，都需要进行确认操作
 
-```jsp 
+```javascript 
 $(function() {
 	$("a").click(function(){
 		var deleteLink = $(this).attr("deleteLink");
 		console.log(deleteLink);
-		if("true"==deleteLink){
+		if("true" == deleteLink){
 			var confirmDelete = confirm("确认要删除");
 			if(confirmDelete)
 				return true;
@@ -4579,7 +4579,7 @@ $(function() {
 
 3. adminNavigator.jsp
 
-![导航栏效果]()
+![导航栏效果](img/横向导航栏.png)
 
 ```jsp
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false" %>
@@ -4653,7 +4653,7 @@ $(function() {
 
 5. adminFooter.jsp
 
-页脚部分，目前是留白。 大家掌握了之后，可以写自己的名字@myname, 年份，版本信息什么的。
+页脚部分，目前是留白。 大家掌握了之后，可以写自己的名字 `@myname`, 年份，版本信息什么的。
 
 ```jsp
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false" %>
@@ -4695,7 +4695,7 @@ $(function() {
 最后就是视图 listCategory.jsp 了。
 在 JSP 包含关系中已经讲解过了 listCategory.jsp 中包含的 jsp 文件，这里就不做赘述。
 本步骤就关注在 listCategory.jsp 主体内容是如何工作的。
-作为视图，担当的角色是显示数据。所以关键就是从第 35 行开始，借助 JSTL 的 `c:forEach` 标签遍历从 `CategoryServlet` 的 list() 的 `request.setAttribute("thecs", cs);` 传递过来的集合。
+作为视图，担当的角色是显示数据。所以关键就是从第 35 行开始，借助 JSTL 的 `c:forEach` 标签遍历从 `CategoryServlet` 的 `list()` 的 `request.setAttribute("thecs", cs);` 传递过来的集合。
 
 `<c:forEach items="${thecs}" var="c">`
 
@@ -4819,11 +4819,11 @@ public class Page {
 当 page.hasPreviouse 为 false 的时候，为首页连接套用 BootStrap 样式 disabled
 
 ```jsp
-    <li <c:if test="${!page.hasPreviouse}">class="disabled"</c:if>>
-      <a  href="?page.start=0${page.param}" aria-label="Previous" >
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>
+<li <c:if test="${!page.hasPreviouse}">class="disabled"</c:if>>
+	<a  href="?page.start=0${page.param}" aria-label="Previous" >
+		<span aria-hidden="true">&laquo;</span>
+	</a>
+</li>
 ```
 
 注： `hasPreviouse` 会的导致 `isHasPreviouse()` 方法被调用，请参考 EL 表达式获取 JavaBean 的属性
@@ -5955,16 +5955,16 @@ $("div.productsAsideCategorys div.row a").each(function(){
 2. 模仿和排错    
 3. 运行效果    
 4. 在产品页点击加入购物车    
-5. ForeServlet.addCart   
+5. `ForeServlet.addCart`   
 
 #### 9.3.5 查看购物车页面
 
 1. 先运行，看到效果，再学习    
 2. 模仿和排错    
 3. 界面效果    
-4. ForeServlet.cart()    
-5. cart.jsp    
-6. cartPage.jsp   
+4. `ForeServlet.cart()`    
+5. `cart.jsp`    
+6. `cartPage.jsp`   
 
 #### 9.3.6 登录状态 Filter
 
@@ -5972,7 +5972,7 @@ $("div.productsAsideCategorys div.row a").each(function(){
 2. 模仿和排错    
 3. 查看购物车页面的问题    
 4. 解决思路    
-5. ForeAuthFilter    
+5. `ForeAuthFilter`    
 6. web.xml   
 
 #### 9.3.7 购物车页面操作
@@ -5996,7 +5996,7 @@ $("div.productsAsideCategorys div.row a").each(function(){
 2. 模仿和排错    
 3. 结算页操作    
 4. 运行效果    
-5. ForeServlet.createOrder    
+5. `ForeServlet.createOrder`    
 6. 确认支付页    
 7. 支付成功页   
 
