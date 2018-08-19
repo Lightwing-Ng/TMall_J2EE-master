@@ -5106,13 +5106,13 @@ public class Page {
 5. 代码讲解: `ForeServlet` 和 `BaseForeServlet`    
 6. 一个 `Servlet` 类就能满足所有前端业务要求   
 
-#### 9.1.5 home 方法
+#### 9.1.5 `home` 方法
 
 1. MVC 设计思想    
 2. 首页需要什么数据？    
-3. home 方法   
+3. `home` 方法   
 
-#### 9.1.6 home.jsp
+#### 9.1.6 `home.jsp`
 
 1. 前台页面的特点
 
@@ -5519,7 +5519,7 @@ public class Page {
 </div>
 ```
 
-#### 9.1.7 homePage.jsp
+#### 9.1.7 `homePage.jsp`
 
 1. homePage.jsp 的复杂性
 
@@ -5937,7 +5937,7 @@ $("div.productsAsideCategorys div.row a").each(function() {
 5. `cart.jsp`    
 6. `cartPage.jsp`   
 
-#### 9.3.6 登录状态 Filter
+#### 9.3.6 登录状态 `Filter`
 
 1. 先运行，看到效果，再学习    
 2. 模仿和排错    
