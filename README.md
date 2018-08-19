@@ -2020,7 +2020,7 @@ public class OrderItem {
 └── User.java
 ```
 
-## 5 DAO 类设计
+## 5 `DAO` 类设计
 
 ### 5.1 概述
 
@@ -2095,7 +2095,7 @@ public class DateUtil {
 }
 ```
 
-### 5.3 CategoryDAO
+### 5.3 `CategoryDAO`
 
 1. CategoryDAO.java
 
@@ -2201,7 +2201,7 @@ public class CategoryDAO {
 
 2. 基本的 `CRUD` 方法: 代码讲解
 
-CategoryDAO 这个类比起后面的 DAO 比较单纯，基本上就是提供数据库相关的 CRUD 操作：
+`CategoryDAO` 这个类比起后面的 DAO 比较单纯，基本上就是提供数据库相关的 CRUD 操作：
 注： 这部分需要有 JDBC 基础才能学习，倘若 JDBC 基础比较薄弱，可以参考 JDBC 学习内容
 
 1. 增加
@@ -2219,7 +2219,7 @@ CategoryDAO 这个类比起后面的 DAO 比较单纯，基本上就是提供数
 `public void update(Category bean)` 
 
 
-4. 根据 id 获取
+4. 根据 `id` 获取
 
 `public Category get(int id)`
 
@@ -2238,7 +2238,7 @@ CategoryDAO 这个类比起后面的 DAO 比较单纯，基本上就是提供数
 
 `public int getTotal()`
 
-### 5.4 UserDAO
+### 5.4 `UserDAO`
 
 1. UserDAO.java
 
@@ -2898,7 +2898,7 @@ public class PropertyValueDAO {
 2. 本的 CRUD 操作    
 3. 非 CRUD 方法   
 
-### 5.8 ReviewDAO
+### 5.8 `ReviewDAO`
 
 1. `ReviewDAO`
 
@@ -2908,7 +2908,7 @@ public class ReviewDAO {
         int total = 0;
         try (Connection c = DBUtil.getConnection();
              Statement s = c.createStatement()) {
-            String sql = "SELECT count(*) FROM `Review`";
+            String sql = "SELECT COUNT(*) FROM `Review`";
             ResultSet rs = s.executeQuery(sql);
             while (rs.next())
                 total = rs.getInt(1);
@@ -2922,7 +2922,7 @@ public class ReviewDAO {
         int total = 0;
         try (Connection c = DBUtil.getConnection();
              Statement s = c.createStatement()) {
-            String sql = "SELECT count(*) FROM `Review` WHERE `pid` = " + pid;
+            String sql = "SELECT COUNT(*) FROM `Review` WHERE `pid` = " + pid;
             ResultSet rs = s.executeQuery(sql);
             while (rs.next())
                 total = rs.getInt(1);
@@ -3070,7 +3070,7 @@ public class ReviewDAO {
 2. 基本的 CRUD 操作    
 3. 非 CRUD 方法  
 
-### 5.9 OrderDAO
+### 5.9 `OrderDAO`
 
 1. OrderDAO.java
 
@@ -3598,7 +3598,7 @@ public class OrderItemDAO {
 2. 基本的 CRUD 操作    
 3. 非 CRUD 方法    
 
-### 5.11 ProductDAO
+### 5.11 `ProductDAO`
 
 1. ProductDAO.java
 
@@ -4650,18 +4650,16 @@ $(function() {
 
 1. 页面效果
 
-首先访问
-`http://127.0.0.1:8080/admin_category_list`
-观看页面效果
+首先访问 `http://127.0.0.1:8080/admin_category_list` 观看页面效果
 ![分类管理](img/分类管理.png)
 
 2. MVC 设计思想
 
 根据 MVC 设计模式的思想，做 J2EE Web 应用，从 MVC 的角度来看，就是把不同的数据显示在不同的页面上。
 
-数据就是「模型」(bean, dao)
-页面就是「视图」(jsp)
-控制不同的模型显示在不同的视图上，这件事，就是由控制器来完成 (servlet)
+数据就是「模型」(`bean`, `dao`)
+页面就是「视图」(`jsp`)
+控制不同的模型显示在不同的视图上，这件事，就是由控制器来完成 (`servlet`)
 
 所以分类管理，从 MVC 的角度来看，就是把多条分类 `Category` 数据放在一个集合里，让 listCategory.jsp 这个视图去显示出来。
 
@@ -4689,7 +4687,7 @@ $(function() {
 
 2. Page.java
 
-Page 这个类专门为分页提供必要信息
+`Page` 这个类专门为分页提供必要信息
 
 - 属性：
     `int start;` 开始位置
@@ -4791,12 +4789,10 @@ public class Page {
 6. 为了便于理解，先来一个简化了的 `adminPage.jsp`    
 7. 完整版的 `adminPage.jsp`
 
-简化的 adminPage.jsp 用于帮助大家理解，其存在的问题是，即便是没有下一页的数据了，下一页超链也可以点击，点出来的页面是空白的。(首页，上一页，下一页和最后一页都存在这个问题)
-
-那么所谓的完整版的 adminPage.jsp，就是对这些边界进行了处理。当没有下一页的时候，对应超链处于不可点击状态。
+简化的 adminPage.jsp 用于帮助大家理解，其存在的问题是，即便是没有下一页的数据了，下一页超链也可以点击，点出来的页面是空白的。(首页，上一页，下一页和最后一页都存在这个问题)。那么所谓的完整版的 adminPage.jsp，就是对这些边界进行了处理。当没有下一页的时候，对应超链处于不可点击状态。
 
 比如首页：
-当 page.hasPreviouse 为 false 的时候，为首页连接套用 BootStrap 样式 disabled
+当 page.hasPreviouse 为 `false` 的时候，为首页连接套用 BootStrap 样式 `disabled`
 
 ```jsp
 <li <c:if test="${!page.hasPreviouse}">class="disabled"</c:if>>
@@ -4862,7 +4858,7 @@ public class Page {
 2. 为空判断    
 3. 提交数据    
 4. 接受数据并处理    
-5. ImageUtil 工具类    
+5. `ImageUtil` 工具类    
 6. 中文问题    
 7. 客户端跳转  
 
@@ -4886,11 +4882,11 @@ public class Page {
 
 #### 7.1.12 小结
 
-### 7.2 后台：其它管理
+### 7.2 后台: 其它管理
 
 #### 7.2.1 后台其他页面
 
-在后台-分类管理里把设计思路，用到的设计模式，静态资源，JSP 包含关系, 分页，增删改查典型操作等每个详细的操作都掰的很细了。 后台的其他管理页面，比如产品管理，订单管理等也有相近的功能，就不用讲解的那么细的，所以其他的管理页面，就每个页面放在一个知识点里讲解，这样大家学习起来更加紧凑。
+在后台: 分类管理里把设计思路，用到的设计模式，静态资源，JSP 包含关系, 分页，增删改查典型操作等每个详细的操作都掰的很细了。 后台的其他管理页面，比如产品管理，订单管理等也有相近的功能，就不用讲解的那么细的，所以其他的管理页面，就每个页面放在一个知识点里讲解，这样大家学习起来更加紧凑。
 
 #### 7.2.2 属性管理
 
@@ -4993,19 +4989,18 @@ public class Page {
 
 1. 真正开发的时候会直接使用这些前端页面吗？
 
-事实上，这些前端页面都是相当复杂的，真正开发的时候，也不会完全在这些页面上进行，而是把一个复杂的前端页面拆成了多个便于维护与理解的小的 jsp 文件。
-比如首页 home.jsp 就是由多个 home.jsp 公共文件和一个 homePage.jsp 组成。
+事实上，这些前端页面都是相当复杂的，真正开发的时候，也不会完全在这些页面上进行，而是把一个复杂的前端页面拆成了多个便于维护与理解的小的 JSP 文件。比如首页 home.jsp 就是由多个 home.jsp 公共文件和一个 homePage.jsp 组成。
 
 ![home.jsp]()
 
 2. `homePage.jsp` 又由多个子 `jsp` 文件组成
 
-`homePage.jsp` 又由多个子 jsp 文件组成，这样每个文件就相对于整篇的前端页面来讲，简单了不少，更加利于理解与消化
+`homePage.jsp` 又由多个子 JSP 文件组成，这样每个文件就相对于整篇的前端页面来讲，简单了不少，更加利于理解与消化
 ![home.jsp]()
 
 3. 这些前端原型的作用
 
-这些前端原型的作用，主要还是用于和客户沟通，让大家对工作的真正状态有一定的模拟。 如果对前端页面本身的布局，样式十分感兴趣，请跳转到模仿天猫前端教程
+这些前端原型的作用，主要还是用于和客户沟通，让大家对工作的真正状态有一定的模拟。 如果对前端页面本身的布局，样式十分感兴趣，请跳转到模仿天猫前端教程。
 
 ### 8.2 首页
 
@@ -5066,13 +5061,13 @@ public class Page {
 
 #### 9.1.1 概述
 
-前台也包括许多功能，与后台-分类管理类似的，首先把前台-首页这个功能单独拿出来，进行精讲。前台-首页消化吸收好之后，再进行其他前台功能的开发。 
+前台也包括许多功能，与后台: 分类管理类似的，首先把前台: 首页这个功能单独拿出来，进行精讲。前台： 首页消化吸收好之后，再进行其他前台功能的开发。 
 
 1. 前台无需登录 
-从前台模块之间的依赖性，以及开发顺序的合理性来考虑，把前台功能分为了 无需登录 即可使用的功能，和需要登录 才能访问的功能。 建立在前一步前台-首页的基础之上，开始进行一系列的无需登录功能开发。 
+  从前台模块之间的依赖性，以及开发顺序的合理性来考虑，把前台功能分为了 无需登录 即可使用的功能，和需要登录 才能访问的功能。 建立在前一步前台: 首页的基础之上，开始进行一系列的无需登录功能开发。 
 
 2. 前台需要登录 
-接着是需要登录的前台功能。 这部分功能基本上都是和购物相关的。 因此，一开始先把购物流程 单独拿出来捋清楚，其中还特别注明了购物流程环节与表关系，这样能够更好的建立对前端购物功能的理解。随着这部分功能的开发，就会进入订单生成部分，在此之前，先准备了一个 订单状态图，在理解了这个图之后，可以更好的进行订单相关功能的开发。
+  接着是需要登录的前台功能。 这部分功能基本上都是和购物相关的。 因此，一开始先把购物流程 单独拿出来捋清楚，其中还特别注明了购物流程环节与表关系，这样能够更好的建立对前端购物功能的理解。随着这部分功能的开发，就会进入订单生成部分，在此之前，先准备了一个 订单状态图，在理解了这个图之后，可以更好的进行订单相关功能的开发。
 
 #### 9.1.2 可运行项目
 
