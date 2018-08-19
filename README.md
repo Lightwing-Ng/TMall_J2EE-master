@@ -4582,7 +4582,7 @@ $(function() {
 
 这是分页 JSP。分页功能不仅仅有前端效果，还需要结合服务端传递过来的数据综合才能起作用。 所以对于 adminPage.jsp 不在此展开讲解，将在后面的分页部分，结合服务端，专门讲解
 
-![分页条]()
+![分页条](img/分页条.png)
 
 ```jsp
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false" %>
@@ -4654,7 +4654,7 @@ $(function() {
 首先访问
 `http://127.0.0.1:8080/admin_category_list`
 观看页面效果
-![分类管理]()
+![分类管理](img/分类管理.png)
 
 2. MVC 设计思想
 
@@ -4664,9 +4664,9 @@ $(function() {
 页面就是「视图」(jsp)
 控制不同的模型显示在不同的视图上，这件事，就是由控制器来完成 (servlet)
 
-所以分类管理，从 MVC 的角度来看，就是把多条分类 Category 数据放在一个集合里，让 listCategory.jsp 这个视图去显示出来。
+所以分类管理，从 MVC 的角度来看，就是把多条分类 `Category` 数据放在一个集合里，让 listCategory.jsp 这个视图去显示出来。
 
-![MVC理念]()
+![MVC理念](img/MVC理念.png)
 
 3. `list()` 方法
 
@@ -4674,7 +4674,7 @@ $(function() {
 
 5. `listCategory.jsp`
 最后就是视图 listCategory.jsp 了。
-在 JSP 包含关系中已经讲解过了 listCategory.jsp 中包含的 jsp 文件，这里就不做赘述。
+在 JSP 包含关系中已经讲解过了 listCategory.jsp 中包含的 JSP 文件，这里就不做赘述。
 本步骤就关注在 listCategory.jsp 主体内容是如何工作的。
 作为视图，担当的角色是显示数据。所以关键就是从第 35 行开始，借助 JSTL 的 `c:forEach` 标签遍历从 `CategoryServlet` 的 `list()` 的 `request.setAttribute("thecs", cs);` 传递过来的集合。
 
@@ -4686,7 +4686,7 @@ $(function() {
 
 默认是每页显示 5 条数据，所以先增加几条数据，以观察分页效果
 
-![分页效果]()
+![分页效果](img/分页条.png)
 
 2. Page.java
 
@@ -4901,7 +4901,7 @@ public class Page {
 4. 在分类管理页面上添加属性管理的超链    
 5. `PropertyServlet` 类    
 6. web.xml    
-7. listProperty.jsp + editProperty.jsp    
+7. `listProperty.jsp` + `editProperty.jsp`    
 8. 查询功能讲解    
 9. 增加功能讲解    
 10. 编辑功能讲解    
@@ -4933,7 +4933,7 @@ public class Page {
 2. 模仿和排错    
 3. 页面截图    
 4. `ProductImageServlet` 类    
-5. web.xml    
+5. `web.xml`
 6. `listProductImage.jsp`    
 7. 查询功能讲解    
 8. 增加功能讲解    
