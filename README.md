@@ -3960,13 +3960,11 @@ public class ProductDAO {
 #### 7.1.2 可运行的项目
 
 1. 可运行项目    
-2. 在 tomcat 中配置 tmall    
+2. 在 Tomcat 中配置 Tmall    
 3. 启动 Tomcat 并观察效果    
-4. tomcat 启动失败
+4. Tomcat 启动失败的应对策略
 
-如果 tomcat 启动失败，通常是因为 8080 端口被占用了，有可能是 Oracle 占用了 8080 端口，关闭掉 Oracle 即可。
-
-如果不是 Oracle 占用，按照如下办法排查，并关闭对应程序： Tomcat 端口被占用怎么办
+如果 tomcat 启动失败，通常是因为 8080 端口被占用了，有可能是 Oracle 占用了 8080 端口，关闭掉 Oracle 即可。如果不是 Oracle 占用，按照如下办法排查，并关闭对应程序： Tomcat 端口被占用怎么办。
 
 #### 7.1.3 静态资源
 
@@ -3984,7 +3982,7 @@ public class ProductDAO {
     └── star
 ```
 
-2. CSS
+2. `CSS`
 
 在 css 目录里有 3 个子目录
 - back
@@ -3994,7 +3992,7 @@ public class ProductDAO {
 - fore
 这个目录里也有一个 `style.css`，这是前台界面用到的样式
 
-3. JavaScript
+3. `JavaScript`
 
 js 目录下有两个子目录
 `/bootstrap`
@@ -4002,11 +4000,11 @@ js 目录下有两个子目录
 `/jquery`
 `jQuery` 用到的 js 文件
 
-4. jars
+4. `jars`
 
 除了图片资源外，还用到了各种第三方的 jar 包
 
-#### 7.1.4 Filter 配合 Servlet
+#### 7.1.4 `Filter` 配合 `Servlet`
 
 1. 一个路径对应一个 Servlet 的弊端
 
@@ -4015,7 +4013,7 @@ js 目录下有两个子目录
 `http://127.0.0.1:8080/tmall/admin_category_list`
 
 可以发现，分类管理需要：增加、删除、编辑、修改和查询 5 个服务端功能。 
-那么按照传统的在 web.xml 中配置 Servlet 的方式，一个路径对应一个 Servlet 的思路，就需要设计 5 个 Servlet 类，并且在 web.xml 中配置 5 个路径
+那么按照传统的在 web.xml 中配置 `Servlet` 的方式，一个路径对应一个 `Servlet` 的思路，就需要设计 5 个 `Servlet` 类，并且在 web.xml 中配置 5 个路径
 
 `AddCategoryServlet`
 `DeleteCategoryServlet`
@@ -4023,17 +4021,17 @@ js 目录下有两个子目录
 `UpdateCategoryServlet`
 `ListCategoryServlet`
 
-而后台需要做分类、产品、属性、产品图片、用户、订单这么 6 种管理，那么就一共需要 30 个 Servlet，以及在 web.xml 中对应的配置，那么配置文件就会变得臃肿，并且容易出错。
+而后台需要做分类、产品、属性、产品图片、用户、订单这么 6 种管理，那么就一共需要 30 个 `Servlet`，以及在 web.xml 中对应的配置，那么配置文件就会变得臃肿，并且容易出错。
 
 2. 对设计进行改进
 
-但是观察已经实现了分类管理的可运行项目下载包里的代码，却发现 Servlet 只有一个即 `CategoryServlet`，在 web.xml 里，也只有一个 CategoryServlet 的映射，并没有 5 个映射。
+但是观察已经实现了分类管理的可运行项目下载包里的代码，却发现 `Servlet` 只有一个即 `CategoryServlet`，在 web.xml 里，也只有一个 `CategoryServlet` 的映射，并没有 5 个映射。
 
-如图是对于最后完工了的项目的 servlet 包里类的截图，可以发现，每种实体类，对应了一个 Servlet，而不是对应了 5 个，这样首先从 Servlet 数量上来讲，就大大的减少了
+如图是对于最后完工了的项目的 `Servlet` 包里类的截图，可以发现，每种实体类，对应了一个 `Servlet`，而不是对应了 5 个，这样首先从 `Servlet` 数量上来讲，就大大的减少了。
 
 3. 原理流程图
 
-![原理流程图]()
+![原理流程图](img/原理流程图.png)
 
 4. 代码讲解: `BackServletFilter`    
 
@@ -4262,7 +4260,7 @@ public abstract class BaseBackServlet extends HttpServlet {
 
 6. 一个 `Servlet` 类就能满足 CRUD 一系列业务要求
 
-通过这样一种模式，一个 Servlet 类就能满足 CRUD 一系列业务要求，如果访问的路径是 `admin_category_list`，就会调用 `categoryServlet.list()` 方法
+通过这样一种模式，一个 `Servlet` 类就能满足 CRUD 一系列业务要求，如果访问的路径是 `admin_category_list`，就会调用 `categoryServlet.list()` 方法
 如果访问的路径是 `admin_category_add`，就会调用 `categoryServlet.add()` 方法
 如果访问的路径是 `admin_category_delete`，就会调用 `categoryServlet.delete()` 方法
 如果访问的路径是 `admin_category_edit`，就会调用 `categoryServlet.edit()` 方法
@@ -4403,14 +4401,14 @@ listCategory.jsp 用到了 4 个公共包含文件
 2. adminHeader.jsp
 
 每个后台页面都在一开始使用了`adminHeader.jsp`
-- 表示本页面会使用 html5 的技术
+- 表示本页面会使用 HTML5 的技术
 
 `<!DOCTYPE html>`
 
 - jsp 指令
 
 `<%@ page language="java" contentType="text/html; charset=UTF-8"`
-	`pageEncoding="UTF-8" isELIgnored="false"%>`
+`pageEncoding="UTF-8" isELIgnored="false"%>`
 
 `contentType="text/html; charset=UTF-8"` 告诉浏览器使用 UTF-8 进行中文编码识别
 `pageEncoding="UTF-8"` 本 jsp 上的中文文字，使用 UTF-8 进行编码
@@ -4434,44 +4432,45 @@ listCategory.jsp 用到了 4 个公共包含文件
 
 ```jsp
 <script>
-function checkEmpty(id, name){
-	var value = $("#"+id).val();
-	if(value.length==0){
-		alert(name+ "不能为空");
-		$("#"+id)[0].focus();
-		return false;
-	}
-	return true;
+function checkEmpty(id, name) {
+    var value = $("#" + id).val();
+    if (value.length == 0) {
+        alert(name + "不能为空");
+        $("#" + id)[0].focus();
+        return false;
+    }
+    return true;
 }
-function checkNumber(id, name){
-	var value = $("#"+id).val();
-	if(value.length==0){
-		alert(name+ "不能为空");
-		$("#"+id)[0].focus();
-		return false;
-	}
-	if(isNaN(value)){
-		alert(name+ "必须是数字");
-		$("#"+id)[0].focus();
-		return false;
-	}
-	
-	return true;
+
+function checkNumber(id, name) {
+    var value = $("#" + id).val();
+    if (value.length == 0) {
+        alert(name + "不能为空");
+        $("#" + id)[0].focus();
+        return false;
+    }
+    if (isNaN(value)) {
+        alert(name + "必须是数字");
+        $("#" + id)[0].focus();
+        return false;
+    }
+    return true;
 }
-function checkInt(id, name){
-	var value = $("#"+id).val();
-	if(value.length==0){
-		alert(name+ "不能为空");
-		$("#"+id)[0].focus();
-		return false;
-	}
-	if(parseInt(value)!=value){
-		alert(name+ "必须是整数");
-		$("#"+id)[0].focus();
-		return false;
-	}
-	
-	return true;
+
+function checkInt(id, name) {
+    var value = $("#" + id).val();
+    if (value.length == 0) {
+        alert(name + "不能为空");
+        $("#" + id)[0].focus();
+        return false;
+    }
+    
+    if (parseInt(value) != value) {
+        alert(name + "必须是整数");
+        $("#" + id)[0].focus();
+        return false;
+    }
+    return true;
 }
 ```
 
@@ -4494,8 +4493,7 @@ $(function() {
 
 ```jsp
 <!DOCTYPE html>
-<%@ page contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" isELIgnored="false" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix='fmt' %>
 
@@ -4582,8 +4580,7 @@ $(function() {
 
 4. adminPage.jsp
 
-这是分页 JSP。
-分页功能不仅仅有前端效果，还需要结合服务端传递过来的数据综合才能起作用。 所以对于 adminPage.jsp 不在此展开讲解，将在后面的分页部分，结合服务端，专门讲解
+这是分页 JSP。分页功能不仅仅有前端效果，还需要结合服务端传递过来的数据综合才能起作用。 所以对于 adminPage.jsp 不在此展开讲解，将在后面的分页部分，结合服务端，专门讲解
 
 ![分页条]()
 
