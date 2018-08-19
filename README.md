@@ -315,7 +315,7 @@
 
 在结算页面显示被选中的订单项
 
-![在结算页面显示被选中的订单项]()
+![在结算页面显示被选中的订单项](img/在结算页面显示被选中的订单项.png)
 
 #### 2.1.8 确认支付页
 
@@ -333,13 +333,13 @@
 
 显示所有订单，以及对应的订单项
 
-![显示所有订单以及对应的订单项]()
+![显示所有订单以及对应的订单项](img/显示所有订单以及对应的订单项.png)
 
 #### 2.1.11 确认收货页
 
 1. 显示订单项内容
 
-![显示订单项内容]()
+![显示订单项内容](img/显示订单项内容.png)
 
 2. 显示订单信息，收货人地址等
 
@@ -359,11 +359,11 @@
 
 1. 未登录状态
 
-![未登陆状态](未登录购买.png)
+![未登陆状态](img/未登陆状态.png)
 
 2. 已登录状态
 
-![已登陆状态]()
+![已登陆状态](img/已登陆状态.png)
 
 ### 2.2 交互
 
@@ -375,11 +375,11 @@
 
 1. 按照综合，人气，新品，销量，价格排序 
 
-![分类排序]()
+![分类排序](img/分类排序.png)
 
 2. 进行价格筛选，这个不算，这个是做在浏览器端的，并不是和服务器端的交互   
 
-![价格筛选]()
+![价格筛选](img/价格筛选.png)
 
 #### 2.2.3 立即购买
 
@@ -399,7 +399,7 @@
 
 1. 在未登录状态，点击加入购物车
 
-![在未登录状态点击加入购物车]()
+![在未登录状态点击加入购物车](img/未登录购买.png)
 
 2. 在已登录状态，点击加入购物车，使用 AJAX 异步提交数据到服务端，生成订单项，并且使当前 "加入购物车" 按钮变得不可点击
 
@@ -459,7 +459,7 @@
 
 #### 2.2.14 退出
 
-![退出]()
+![退出](img/退出.png)
 
 #### 2.2.15 搜索
 
@@ -476,9 +476,9 @@
 
 2. 产品页
 
-- 显示分辨率为 950x100 的当前商品对应的分类图片
+- 显示分辨率为 950*100 的当前商品对应的分类图片
 - 显示本商品的 5 个单独图片
-- 商品的基本信息，如标题，小标题，加个，销量，评价数量，库存等
+- 商品的基本信息，如标题/小标题/加个/销量/评价数量/库存等
 - 商品详情
 - 评价信息
 - 5 张商品详细图片
@@ -487,7 +487,7 @@
 
 3. 分类页
 
-- 显示分辨率为 950x100 的当前分类图片
+- 显示分辨率为 950*100 的当前分类图片
 - 显示本分类下的所有产品
 - 分类页排序
 
@@ -600,25 +600,25 @@
 
 5. 删除
 
-![删除]()
+![删除分类](img/删除分类.png)
 
 #### 2.3.4 产品管理
 
 1. 分页查询
 
-![分页查询]()
+![分页查询](img/产品管理.png)
 
 2. 新增产品
 
-![新增产品]()
+![新增产品](img/增加产品.png)
 
 3. 编辑修改
 
-![编辑修改]()
+![编辑修改](img/编辑产品属性.png)
 
-4. 删除
+4. 删除商品
 
-![删除]()
+![删除](img/删除商品.png)
 
 #### 2.3.5 产品图片管理
 
@@ -651,21 +651,21 @@
 2. 用户信息的修改，应该交由前端由客户自己修改，比如密码，基本信息等 
 3. 用户的增加，是前端注册导致的，后台不负责用户的增加  所以，增，删，改功能在后台就不提供了，仅仅提供一个分页查询
 
-![用户分页查询]()
+![用户分页查询](img/用户管理.png)
 
 #### 2.3.8 订单管理
 
 1. 订单分页查询   
 
-![订单分页查询]() 
+![订单分页查询](img/订单管理.png) 
 
 2. 查看详情
 
-![查看详情]()
+![查看详情](img/查看订单详情.png)
 
 3. 发货
 
-![发货]()    
+![发货](img/发货.png)    
 
 #### 2.3.9 后台需求列表
 
@@ -760,9 +760,9 @@ CREATE DATABASE tmall DEFAULT CHARACTER SET utf8;
 
 表与表之间的关系，基本上是 3 种
 
-- 一对一
+- **一对一**
 - 一对多
-- 多对一
+- **多对一**
 
 那么怎么判断关系到底是什么呢？
 以分类和产品为例子，分类表里有多条数据，产品表里也有多条数据，那么他们的关系是多对多吗？ 从经验上讲，我们知道这个结果是不正确的。
@@ -852,19 +852,14 @@ CREATE INDEX fk_property_category
 
 产品表字段稍多，讲解一下 
 
-name: 产品名称 
+`name`: 产品名称 
+`subTitle`: 小标题 
+`orignalPrice`: 原始价格 
+`promotePrice`: 优惠价格 
+`stock`: 库存 
+`createDate`: 创建日期  
 
-subTitle: 小标题 
-
-orignalPrice: 原始价格 
-
-promotePrice: 优惠价格 
-
-stock: 库存 
-
-createDate: 创建日期  
-
-本表的外键 cid，指向分类表的 id 字段
+本表的外键 `cid`，指向分类表的 `id` 字段
 
 ```sql
 CREATE TABLE tmall.product
@@ -887,9 +882,9 @@ CREATE INDEX fk_product_category
     ON tmall.product (cid);
 ```
 
-6. 属性值表    
+6. 属性值表
 
-本表有两个外键 外键 ptid，指向属性表的 id 字段 外键 pid，指向产品表的 id 字段
+本表有两个外键外键 `ptid`，指向属性表的 `id` 字段 外键 `pid`，指向产品表的 `id` 字段
 
 ```sql
 CREATE TABLE tmall.propertyvalue
@@ -910,7 +905,7 @@ CREATE INDEX fk_propertyvalue_property
 
 7. 产品图片表    
 
-type 表示类型，产品图片分单个图片和详情图片两种  本表的外键 pid，指向产品表的 id 字段
+`type` 表示类型，产品图片分单个图片和详情图片两种  本表的外键 `pid`，指向产品表的 `id` 字段
 
 ```sql
 CREATE TABLE tmall.productimage
@@ -930,7 +925,7 @@ CREATE INDEX fk_productimage_product
 
 8. 评价表    
 
-外键 pid，指向产品表的 id 字段 外键 uid，指向用户表的 id 字段
+外键 `pid`，指向产品表的 `id` 字段 外键 `uid`，指向用户表的 `id` 字段
 
 ```sql
 CREATE TABLE tmall.review
@@ -971,7 +966,7 @@ CREATE INDEX fk_review_user
 `confirmDate`：确认收货日期 
 `status`: 订单状态 
 
-外键 uid，指向用户表 id 字段
+外键 `uid`，指向用户表 `id` 字段
 
 ```sql
 CREATE TABLE tmall.order_
@@ -1002,11 +997,11 @@ CREATE INDEX fk_order_user
 10. 订单项表    
 
 这个表是外键最多的一个表
-外键 pid，指向产品表 id 字段
-外键 oid，指向订单表 id 字段
-外键 uid，指向用户表 id 字段
-number 字段表示购买数量
-注： oid 外键没有加约束，是因为创建订单项的时候，其所对应的订单可能还未创建
+外键 `pid`，指向产品表 `id` 字段
+外键 `oid`，指向订单表 `id` 字段
+外键 `uid`，指向用户表 `id` 字段
+`number` 字段表示购买数量
+注： `oid` 外键没有加约束，是因为创建订单项的时候，其所对应的订单可能还未创建
 
 ```sql
 CREATE TABLE tmall.orderitem
@@ -1072,8 +1067,6 @@ CREATE TABLE tmall.category
 
 4. 属性表
 
-![属性表]()
-
 ```sql
 CREATE TABLE tmall.property
 (
@@ -1093,8 +1086,6 @@ CREATE INDEX fk_property_category
 5. 产品表
 
 产品页的产品信息里显示本产品的名称，小标题，原始价格，促销价，销量，库存等信息
-
-![产品表]()
 
 ```sql
 CREATE TABLE tmall.product
@@ -1257,8 +1248,8 @@ CREATE INDEX fk_orderitem_user
 到了这里，就开始真正写代码了。
 
 首先建立 java project: tmall
-注：不要用 Dynamic Web Project，而是使用 Java project。
-后续的 tomcat 中的配置都是基于 java project 上进行的
+注：不要用 Dynamic Web Project，而是使用 Java Project。
+后续的 Tomcat 中的配置都是基于 Java Project 上进行的
 
 ```powershell
 .
@@ -1280,9 +1271,9 @@ CREATE INDEX fk_orderitem_user
 
 3. User.java
 
-User 类主要就是提供 id, name, password 的 getter 和 setter.  其中 getAnonymousName 表示获取本用户的匿名名称，在评价的时候显示用户名使用。
+`User` 类主要就是提供 `id`, `name`, `password` 的 `getter` 和 `setter`.  其中 `getAnonymousName` 表示获取本用户的匿名名称，在评价的时候显示用户名使用。
 
-```sql
+```java
 package tmall.bean;
 
 public class User {
@@ -1337,9 +1328,7 @@ public class User {
 
 1. Category.java
 
-`Category` 除了基本属性 id 和 name 的 getter 和 setter 外，还提供了一对多关系 products 的 getter 与 setter。
-
-另外还有一个 `List<List<Product>> productsByRow;` 属性， 这个属性在下个步骤配合截图讲解
+`Category` 除了基本属性 `id` 和 `name` 的 `getter` 和 `setter` 外，还提供了一对多关系 `products` 的 `getter` 与 `setter`。另外还有一个 `List<List<Product>> productsByRow;` 属性， 这个属性在下个步骤配合截图讲解
 
 ```java
 public String toString() {
@@ -1402,9 +1391,8 @@ public class Category {
 2. `productByRow`
 
 `productsByRow` 这个属性的类型是 `List<List<Product>> productsByRow`。
-即一个分类又对应多个 `List<Product>`，提供这个属性，是为了在首页竖状导航的分类名称右边显示产品列表。
+即一个分类又对应多个 `List<Product>`，提供这个属性，是为了在首页竖状导航的分类名称右边显示产品列表。如截图所示，一个分类会对应多行产品，而一行产品里又有多个产品记录。
 
-如截图所示，一个分类会对应多行产品，而一行产品里又有多个产品记录。
 为了实现界面上的这个功能，为 `Category` 类设计了 `List<List<Product>> productsByRow` 这样一个集合属性
 
 ![空调分类详细]()
