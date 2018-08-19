@@ -1391,22 +1391,20 @@ public class Category {
 2. `productByRow`
 
 `productsByRow` 这个属性的类型是 `List<List<Product>> productsByRow`。
-即一个分类又对应多个 `List<Product>`，提供这个属性，是为了在首页竖状导航的分类名称右边显示产品列表。如截图所示，一个分类会对应多行产品，而一行产品里又有多个产品记录。
+即一个分类又对应多个 `List<Product>`，提供这个属性，是为了在首页竖状导航的分类名称右边显示产品列表。如截图所示，一个分类会对应多行产品，而一行产品里又有多个产品记录。为了实现界面上的这个功能，为 `Category` 类设计了 `List<List<Product>> productsByRow` 这样一个集合属性
 
-为了实现界面上的这个功能，为 `Category` 类设计了 `List<List<Product>> productsByRow` 这样一个集合属性
-
-![空调分类详细]()
+![空调分类详细](img/空调分类详细.png)
 
 ### 4.4 Property
 
 Property.java
 
-1. 基本属性的 getter、setter
+1. 基本属性的 `getter`、`setter`
 2. 与 `Category` 的多对一关系
 
 如图所示，这些属性，都属于平板电视这个分类。
 
-![查看属性]()
+![查看属性](img/商品的基本信息.png)
 
 ```java
 package tmall.bean;
@@ -1603,7 +1601,7 @@ public class Product {
 
 3. 相关功能页面截图-理解 `reviewCount`, `saleCount`
 
-![评价总数]()
+![评价总数](img/评价总数.png)
 
 ### 4.6 ProductImage
 
@@ -1646,13 +1644,13 @@ public class ProductImage {
 
 ### 4.7 PropertyValue
 
-1. 基本属性的 getter、setter 
+1. 基本属性的 `getter`、`setter` 
 2. 与 `Product` 的多对一关系 
 3. 与 `Propety` 的多对一关系  
 
 如图所示，一个属性值，需要同时关联 `Property` 和 `Product`
 
-![属性值设置]()
+![属性值设置](img/编辑产品属性.png)
 
 ```java
 CREATE TABLE tmall.propertyvalue
@@ -1673,7 +1671,7 @@ CREATE INDEX fk_propertyvalue_property
 
 ### 4.8 Review
 
-1. 基本属性的 getter、setter 
+1. 基本属性的 `getter`, `setter` 
 2. 与 `User` 的多对一关系 
 3. 与 `Product` 的多对一关系
 
@@ -1737,7 +1735,7 @@ public class Review {
 
 1. Order.java
 
-- 基本属性的 getter, setter 
+- 基本属性的 `getter`, `setter` 
 - 与 `OrderItem` 的一对多关系 
 - `total`, `totalNumber` 这个订单的总金额和总数量
 
@@ -1932,19 +1930,18 @@ public class Order {
 
 4. 相关功能页面截图: 理解 `getStatusDesc`
 
-在数据库中存放的 Status 是英文，而在界面上需要把这些英文对应的中文显示出来  这些英文是常量，保存在 `OrderDAO` 上，但是借助目前为止还没有讲到 `OrderDAO` 
-类，所以这部分代码注释掉了
+在数据库中存放的 `Status` 是英文，而在界面上需要把这些英文对应的中文显示出来  这些英文是常量，保存在 `OrderDAO` 上，但是借助目前为止还没有讲到 `OrderDAO` 类，所以这部分代码注释掉了。
 
 ![相关功能页面截图]()
 
 ### 4.10 OrderItem
 
-1. OrderItem
+1. `OrderItem`
 
-- 基本属性的 getter, setter
-- 与 Product 的多对一关系
-- 与 User 的多对一关系
-- 与 Order 的多对一关系
+- 基本属性的 `getter`, `setter`
+- 与 `Product` 的多对一关系
+- 与 `User` 的多对一关系
+- 与 `Order` 的多对一关系
 
 ```java
 package tmall.bean;
@@ -1998,7 +1995,7 @@ public class OrderItem {
 }
 ```
 
-2. 相关功能页面截图: 理解与 User、Product 的多对一关系
+2. 相关功能页面截图: 理解与 `User`、`Product` 的多对一关系
 
 在产品页面，立即购买，或者加入购物车就会创建一条 `OrderItem` 对象。 而此时必须有 `Product`，并且是登录状态(能够从 `Session` 中取出 `User`) 但是此时还没有和 `Order` 
 关联起来
@@ -2028,15 +2025,15 @@ public class OrderItem {
 
 ### 5.1 概述
 
-接下来是 DAO 类，DAO 是 Data Access Object 的缩写，这些类专门用于进行数据库访问的操作。 
+接下来是 `DAO` 类，`DAO` 是 Data Access Object 的缩写，这些类专门用于进行数据库访问的操作。 
 
-1. 首先讲解两个工具类，DBUtil 和 DateUtil，因为在 DAO 类中会用到这两个工具类 
+1. 首先讲解两个工具类，`DBUtil` 和 `DateUtil`，因为在 DAO 类中会用到这两个工具类 
 
 2. 接着按照依赖顺序，逐个讲解不同的 DAO 类以及其中的方法
 
 ### 5.2 工具类
 
-1. DBUtil
+1. `DBUtil`
 
 DBUtil：数据库工具类，这个类的作用是初始化驱动，并且提供一个 `getConnection` 用于获取连接。 在后续的所有 DAO 中，当需要获取连接的时候，都采用这种方式进行。
 数据库连接的参数，如数据库名称，账号密码，编码方式等都设计在属性上，便于统一修改，降低维护成本。
@@ -2075,12 +2072,11 @@ public class DBUtil {
 
 ```
 
-2. DateUtil
+2. `DateUtil`
 
-DateUtil 这个日期工具类主要是用于 java.util.Date 类与 java.sql.Timestamp 类的互相转换。
+`DateUtil` 这个日期工具类主要是用于 `java.util.Date` 类与 `java.sql.Timestamp` 类的互相转换。
 
-因为在实体类中日期类型的属性，使用的都是 java.util.Date 类。
-而为了在 MySQL 中的日期格式里保存时间信息，必须使用 datetime 类型的字段，而 jdbc 要获取 datetime 类型字段的信息，需要采用 `java.sql.Timestamp` 来获取，否则只会保留日期信息，而丢失时间信息。
+因为在实体类中日期类型的属性，使用的都是 java.util.Date 类。而为了在 MySQL 中的日期格式里保存时间信息，必须使用 `datetime` 类型的字段，而 JDBC 要获取 datetime 类型字段的信息，需要采用 `java.sql.Timestamp` 来获取，否则只会保留日期信息，而丢失时间信息。
 
 ```java
 package tmall.util;
@@ -2104,7 +2100,7 @@ public class DateUtil {
 
 1. CategoryDAO.java
 
-CategoryDAO 用于建立对于 Category 对象的 ORM 映射
+`CategoryDAO` 用于建立对于 `Category` 对象的 ORM 映射
 
 ```java
 public class CategoryDAO {
@@ -2204,7 +2200,7 @@ public class CategoryDAO {
 }
 ```
 
-2. 基本的 CRUD 方法-代码讲解
+2. 基本的 `CRUD` 方法: 代码讲解
 
 CategoryDAO 这个类比起后面的 DAO 比较单纯，基本上就是提供数据库相关的 CRUD 操作：
 注： 这部分需要有 JDBC 基础才能学习，倘若 JDBC 基础比较薄弱，可以参考 JDBC 学习内容
@@ -2247,7 +2243,7 @@ CategoryDAO 这个类比起后面的 DAO 比较单纯，基本上就是提供数
 
 1. UserDAO.java
 
-UserDAO 用于建立对于 User 对象的 ORM 映射
+`UserDAO` 用于建立对于 `User` 对象的 ORM 映射
 
 ```java
 public class UserDAO {
@@ -2255,7 +2251,7 @@ public class UserDAO {
         int total = 0;
         try (Connection c = DBUtil.getConnection();
              Statement s = c.createStatement()) {
-            String sql = "SELECT count(*) FROM `User`";
+            String sql = "SELECT COUNT(*) FROM `User`";
             ResultSet rs = s.executeQuery(sql);
             while (rs.next()) {
                 total = rs.getInt(1);
@@ -2267,7 +2263,7 @@ public class UserDAO {
     }
 
     public void add(User bean) {
-        String sql = "INSERT INTO `user` VALUES(NULL, ?, ?)";
+        String sql = "INSERT INTO `User` VALUES(NULL, ?, ?)";
         try (Connection c = DBUtil.getConnection();
              PreparedStatement ps = c.prepareStatement(sql)) {
             ps.setString(1, bean.getName());
@@ -2284,7 +2280,7 @@ public class UserDAO {
     }
 
     public void update(User bean) {
-        String sql = "UPDATE `user` SET `name` = ?, `password` = ? WHERE `id` = ?";
+        String sql = "UPDATE `User` SET `name` = ?, `password` = ? WHERE `id` = ?";
         try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql)) {
             ps.setString(1, bean.getName());
             ps.setString(2, bean.getPassword());
@@ -2402,18 +2398,18 @@ public class UserDAO {
 
 2. 基本的 CRUD
 
-基本的 CRUD 操作与 CategoryDAO 的 CRUD 一样，在此不做赘述
+基本的 CRUD 操作与 `CategoryDAO` 的 CRUD 一样，在此不做赘述
 
 3. 非 CRUD 方法
 
-除开 CRUD 之外，UserDAO 还提供了一些其他用于支持业务的方法。
+除开 CRUD 之外，`UserDAO` 还提供了一些其他用于支持业务的方法。
 
-在业务上，注册的时候，需要判断某个用户是否已经存在，账号密码是否正确等操作，UserDAO 特别提供如下方法进行支持：
+在业务上，注册的时候，需要判断某个用户是否已经存在，账号密码是否正确等操作，`UserDAO` 特别提供如下方法进行支持：
 根据用户名获取对象
 
 `public User get(String name)`
 
-以 boolean 形式返回某个用户名是否已经存在
+以 `boolean` 形式返回某个用户名是否已经存在
 
 `public boolean isExist(String name)`
 
@@ -2423,7 +2419,7 @@ public class UserDAO {
 
 **注**：部分非 CRUD 的业务方法，需要结合业务场景才能更好的理解，现在理解不透彻也很正常，在后续学习到相关场景的时候，再回过头来看，就明白了。
 
-4. 相关界面功能截图-注册验证账号是否重复
+4. 相关界面功能截图: 注册验证账号是否重复
 
 ![注册页面](img/注册页面.png)
 
