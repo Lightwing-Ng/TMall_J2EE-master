@@ -1241,7 +1241,7 @@ CREATE INDEX fk_orderitem_user
 
 基于前面数据库表结构的分析和设计，根据创建表的 SQL 语句，和表与页面一一对应关系,按照表与表之间的依赖顺序，逐个设计总计九个实体类
 
-### 4.2 User
+### 4.2 `User`
 
 1. 项目
 
@@ -1324,7 +1324,7 @@ public class User {
 }
 ```
 
-### 4.3 Category
+### 4.3 `Category`
 
 1. Category.java
 
@@ -1395,7 +1395,7 @@ public class Category {
 
 ![空调分类详细](img/空调分类详细.png)
 
-### 4.4 Property
+### 4.4 `Property`
 
 Property.java
 
@@ -1440,7 +1440,7 @@ public class Property {
 }
 ```
 
-### 4.5 Product
+### 4.5 `Product`
 
 1. Product.java
 
@@ -1603,9 +1603,9 @@ public class Product {
 
 ![评价总数](img/评价总数.png)
 
-### 4.6 ProductImage
+### 4.6 `ProductImage`
 
-1. 基础属性的 getter、setter
+1. 基础属性的 `getter`、`setter`
 2. 与 `Product` 的多对一关系
 
 ```java
@@ -1642,7 +1642,7 @@ public class ProductImage {
 }
 ```
 
-### 4.7 PropertyValue
+### 4.7 `PropertyValue`
 
 1. 基本属性的 `getter`、`setter` 
 2. 与 `Product` 的多对一关系 
@@ -1652,7 +1652,7 @@ public class ProductImage {
 
 ![属性值设置](img/编辑产品属性.png)
 
-```java
+```sql
 CREATE TABLE tmall.propertyvalue
 (
     id INT AUTO_INCREMENT
@@ -1669,7 +1669,7 @@ CREATE INDEX fk_propertyvalue_property
     ON tmall.propertyvalue (ptid);
 ```
 
-### 4.8 Review
+### 4.8 `Review`
 
 1. 基本属性的 `getter`, `setter` 
 2. 与 `User` 的多对一关系 
@@ -1731,7 +1731,7 @@ public class Review {
 }
 ```
 
-### 4.9 Order
+### 4.9 `Order`
 
 1. Order.java
 
@@ -1920,21 +1920,21 @@ public class Order {
 
 一个订单下有多个订单项
 
-![一个订单下有多个订单项]()
+![一个订单下有多个订单项](img/一个订单下有多个订单项.png)
 
 3. 相关功能页面截图: 理解 `total`, `totalNumber`
 
 订单的总金额和商品总数量
 
-![订单的总金额和商品总数量]()
+![订单的总金额和商品总数量](img/订单的总金额和商品总数量.png)
 
 4. 相关功能页面截图: 理解 `getStatusDesc`
 
 在数据库中存放的 `Status` 是英文，而在界面上需要把这些英文对应的中文显示出来  这些英文是常量，保存在 `OrderDAO` 上，但是借助目前为止还没有讲到 `OrderDAO` 类，所以这部分代码注释掉了。
 
-![相关功能页面截图]()
+![相关功能页面截图](img/一个订单下有多个订单项.png)
 
-### 4.10 OrderItem
+### 4.10 `OrderItem`
 
 1. `OrderItem`
 
@@ -1997,14 +1997,13 @@ public class OrderItem {
 
 2. 相关功能页面截图: 理解与 `User`、`Product` 的多对一关系
 
-在产品页面，立即购买，或者加入购物车就会创建一条 `OrderItem` 对象。 而此时必须有 `Product`，并且是登录状态(能够从 `Session` 中取出 `User`) 但是此时还没有和 `Order` 
-关联起来
+在产品页面，立即购买，或者加入购物车就会创建一条 `OrderItem` 对象。 而此时必须有 `Product`，并且是登录状态(能够从 `Session` 中取出 `User`) 但是此时还没有和 `Order` 关联起来
 
-![立即购买计入购物车]()
+![立即购买计入购物车](img/立即购买计入购物车.png)
 
-3. 相关功能页面截图: 理解与 Order 的多对一关系  
+3. 相关功能页面截图: 理解与 `Order` 的多对一关系  
 
-![实付款]()
+![实付款](img/实付款.png)
 
 ### 4.11 所有实体类
 
@@ -2027,15 +2026,15 @@ public class OrderItem {
 
 接下来是 `DAO` 类，`DAO` 是 Data Access Object 的缩写，这些类专门用于进行数据库访问的操作。 
 
-1. 首先讲解两个工具类，`DBUtil` 和 `DateUtil`，因为在 DAO 类中会用到这两个工具类 
+1. 首先讲解两个工具类，`DBUtil` 和 `DateUtil`，因为在 `DAO` 类中会用到这两个工具类 
 
-2. 接着按照依赖顺序，逐个讲解不同的 DAO 类以及其中的方法
+2. 接着按照依赖顺序，逐个讲解不同的 `DAO` 类以及其中的方法
 
 ### 5.2 工具类
 
 1. `DBUtil`
 
-DBUtil：数据库工具类，这个类的作用是初始化驱动，并且提供一个 `getConnection` 用于获取连接。 在后续的所有 DAO 中，当需要获取连接的时候，都采用这种方式进行。
+DBUtil：数据库工具类，这个类的作用是初始化驱动，并且提供一个 `getConnection` 用于获取连接。 在后续的所有 `DAO` 中，当需要获取连接的时候，都采用这种方式进行。
 数据库连接的参数，如数据库名称，账号密码，编码方式等都设计在属性上，便于统一修改，降低维护成本。
 
 ```java
@@ -2076,7 +2075,7 @@ public class DBUtil {
 
 `DateUtil` 这个日期工具类主要是用于 `java.util.Date` 类与 `java.sql.Timestamp` 类的互相转换。
 
-因为在实体类中日期类型的属性，使用的都是 java.util.Date 类。而为了在 MySQL 中的日期格式里保存时间信息，必须使用 `datetime` 类型的字段，而 JDBC 要获取 datetime 类型字段的信息，需要采用 `java.sql.Timestamp` 来获取，否则只会保留日期信息，而丢失时间信息。
+因为在实体类中日期类型的属性，使用的都是 java.util.Date 类。而为了在 MySQL 中的日期格式里保存时间信息，必须使用 `datetime` 类型的字段，而 JDBC 要获取 `datetime` 类型字段的信息，需要采用 `java.sql.Timestamp` 来获取，否则只会保留日期信息，而丢失时间信息。
 
 ```java
 package tmall.util;
@@ -5673,14 +5672,14 @@ categoryMenu.jsp 显示左侧的竖状分类导航
 
 `productsAsideCategorys.jsp` 进行了三层遍历
 - 先取出每个分类
-- 然后取出每个分类的 productsByRow 集合
-- 根据 productsByRow 集合，取出每个产品，把产品的 subTitle 信息里的第一个单词取出来显示。
+- 然后取出每个分类的 `productsByRow` 集合
+- 根据 `productsByRow` 集合，取出每个产品，把产品的 `subTitle` 信息里的第一个单词取出来显示。
 
-JQuery代码解释：
-```jquery
+JQuery 代码解释：
+```javascript
 // 这个是用于随机挑选一个产品作为推荐产品，来进行高亮显示。 严格的说，应该是后台设置那个产品是推荐产品，不过这里偷懒了，直接在前端按照 20% 的概率，随机挑选了一个产品。
-$("div.productsAsideCategorys div.row a").each(function(){
-	var v = Math.round(Math.random() *6);
+$("div.productsAsideCategorys div.row a").each(function() {
+	var v = Math.round(Math.random() * 6);
 	if(v == 1)
 		$(this).css("color","#87CEFA");
 });
@@ -5812,13 +5811,13 @@ $("div.productsAsideCategorys div.row a").each(function(){
 
 8. 总结
 
-虽然首页显示的内容非常多，可以说是前端里最复杂的一个展示页面，但是通过这种拆成小块jsp的思路，每个jsp页面的功能就相对单一了。 可以更好的帮助大家理解。
+虽然首页显示的内容非常多，可以说是前端里最复杂的一个展示页面，但是通过这种拆成小块 jsp 的思路，每个 jsp 页面的功能就相对单一了。 可以更好的帮助大家理解。
 
 ### 9.2 无需登录
 
 #### 9.2.1 概述
 
-通过前台-首页的学习，就把前台的思路都理顺了，包括 Filter 配合 Servlet 的设计模式，jsp 页面的包含关系等。在此基础上，学习其他前台页面就更加容易理解了。 
+通过前台-首页的学习，就把前台的思路都理顺了，包括 `Filter` 配合 `Servlet` 的设计模式，jsp 页面的包含关系等。在此基础上，学习其他前台页面就更加容易理解了。 
 根据模仿天猫的前台功能特点，我们把前台功能分为两部分 
 1. 无需登录 
 有一些功能，无需登录也可以使用的，比如登录，注册本身，分类页面，查询，产品页面等 
