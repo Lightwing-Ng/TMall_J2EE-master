@@ -2423,11 +2423,11 @@ public class UserDAO {
 
 ![注册页面](img/注册页面.png)
 
-### 5.5 PropertyDAO
+### 5.5 `PropertyDAO`
 
 1. PropertyDAO.java
 
-PropertyDAO 用于建立对于 [Property](http://how2j.cn/k/tmall-j2ee/tmall-j2ee-975/975.html) 对象的 [ORM 映射](http://how2j.cn/k/jdbc/jdbc-orm/391.html)
+`PropertyDAO` 用于建立对于 [Property](http://how2j.cn/k/tmall-j2ee/tmall-j2ee-975/975.html) 对象的 [ORM 映射](http://how2j.cn/k/jdbc/jdbc-orm/391.html)
 
 ```java
 public class PropertyDAO {
@@ -2563,7 +2563,7 @@ public class PropertyDAO {
 
 2. 基本的 CRUD
 
-基本的 CRUD 操作与 CategoryDAO 的 CRUD 一样，在此不做赘述
+基本的 CRUD 操作与 `CategoryDAO` 的 CRUD 一样，在此不做赘述
 
 3. 非 CRUD 方法
 
@@ -2580,9 +2580,9 @@ public class PropertyDAO {
 
 **注**：部分非 CRUD 的业务方法，需要结合业务场景才能更好地理解，现在理解不透彻也很正常，在后续学习到相关场景的时候，再回过头来看，就明白了。
 
-### 5.6 ProductImageDAO
+### 5.6 `ProductImageDAO`
 
-1. ProductImageDAO.java
+1. `ProductImageDAO.java`
 
 ```java
 package tmall.dao;
@@ -2701,9 +2701,9 @@ public class ProductImageDAO {
 3. 产品图片分类属性    
 4. 非 CRUD 方法    
 
-### 5.7 PropertyValueDAO
+### 5.7 `PropertyValueDAO`
 
-1. PropertyValueDAO.java
+1. `PropertyValueDAO.java`
 
 ```java
 package tmall.dao;
@@ -2901,7 +2901,7 @@ public class PropertyValueDAO {
 
 ### 5.8 ReviewDAO
 
-1. ReviewDAO
+1. `ReviewDAO`
 
 ```java
 public class ReviewDAO {
@@ -3322,9 +3322,9 @@ public class OrderDAO {
 3. 订单类型属性    
 4. 非 CRUD 方法 
 
-### 5.10 OrderItemDAO
+### 5.10 `OrderItemDAO`
 
-1. OrderItemDAO.java
+1. `OrderItemDAO.java`
 
 ```java
 package tmall.dao;
@@ -3885,7 +3885,7 @@ public class ProductDAO {
 
 3. 非 CRUD 方法    
 
-### 5.12 所有 DAO 类
+### 5.12 所有 `DAO` 类
 
 ```powershell
 .
@@ -3903,7 +3903,7 @@ public class ProductDAO {
 ## 6 业务类
 
 1. 通常的设计流程    
-2. 不使用 Service 及其原因 
+2. 不使用 `Service` 及其原因 
 
 ## 7 原型：后台
 
@@ -3919,7 +3919,7 @@ public class ProductDAO {
 
 3. 属性管理
 
-![属性管理]()
+![属性管理](img/分类属性管理.png)
 
 4. 产品管理
 
