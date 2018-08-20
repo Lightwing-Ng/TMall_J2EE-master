@@ -36,7 +36,7 @@
                     page,
                     {"oid": deleteOrderid},
                     function (result) {
-                        if ("success" == result) {
+                        if ("success" === result) {
                             $("table.orderListItemTable[oid=" + deleteOrderid + "]").hide();
                         } else {
                             location.href = "login.jsp";

@@ -17,7 +17,6 @@
                 num = 1;
             $(this).val(num);
 
-
             var begin = $("input.beginPrice").val();
             var end = $("input.endPrice").val();
             if (!isNaN(begin) && !isNaN(end)) {
