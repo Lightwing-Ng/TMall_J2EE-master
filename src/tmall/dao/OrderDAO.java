@@ -50,17 +50,15 @@ public class OrderDAO {
             ps.setString(4, bean.getReceiver());
             ps.setString(5, bean.getMobile());
             ps.setString(6, bean.getUserMessage());
-
             ps.setTimestamp(7, DateUtil.d2t(bean.getCreateDate()));
             ps.setTimestamp(8, DateUtil.d2t(bean.getPayDate()));
             ps.setTimestamp(9, DateUtil.d2t(bean.getDeliveryDate()));
             ps.setTimestamp(10, DateUtil.d2t(bean.getConfirmDate()));
             ps.setInt(11, bean.getUser().getId());
             ps.setString(12, bean.getStatus());
-
             ps.execute();
-
             ResultSet rs = ps.getGeneratedKeys();
+
             if (rs.next()) {
                 int id = rs.getInt(1);
                 bean.setId(id);
@@ -139,7 +137,6 @@ public class OrderDAO {
                 bean.setId(id);
             }
         } catch (SQLException e) {
-
             e.printStackTrace();
         }
         return bean;
