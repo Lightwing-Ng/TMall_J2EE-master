@@ -261,7 +261,6 @@ public class ProductDAO {
                 float promotePrice = rs.getFloat("promotePrice");
                 int stock = rs.getInt("stock");
                 Date createDate = DateUtil.t2d(rs.getTimestamp("createDate"));
-
                 bean.setName(name);
                 bean.setSubTitle(subTitle);
                 bean.setOrignalPrice(orignalPrice);
@@ -269,7 +268,6 @@ public class ProductDAO {
                 bean.setStock(stock);
                 bean.setCreateDate(createDate);
                 bean.setId(id);
-
                 Category category = new CategoryDAO().get(cid);
                 bean.setCategory(category);
                 setFirstProductImage(bean);

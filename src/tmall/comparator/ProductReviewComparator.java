@@ -10,4 +10,3 @@ public class ProductReviewComparator implements Comparator<Product> {
         return p2.getReviewCount() - p1.getReviewCount();
     }
 }
-

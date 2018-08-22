@@ -31,7 +31,7 @@ public class UserDAO {
     }
 
     public void add(User bean) {
-        String sql = "INSERT INTO `user` VALUES(NULL, ?, ?)";
+        String sql = "INSERT INTO `User` VALUES(NULL, ?, ?)";
         try (Connection c = DBUtil.getConnection();
              PreparedStatement ps = c.prepareStatement(sql)) {
             ps.setString(1, bean.getName());
@@ -48,7 +48,7 @@ public class UserDAO {
     }
 
     public void update(User bean) {
-        String sql = "UPDATE `user` SET `name` = ?, `password` = ? WHERE `id` = ?";
+        String sql = "UPDATE `User` SET `name` = ?, `password` = ? WHERE `id` = ?";
         try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql)) {
             ps.setString(1, bean.getName());
             ps.setString(2, bean.getPassword());
@@ -142,7 +142,6 @@ public class UserDAO {
 
     public User get(String name, String password) {
         User bean = null;
-
         String sql = "SELECT * FROM `User` WHERE `name` = ? AND `password` = ?";
         try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql)) {
             ps.setString(1, name);
