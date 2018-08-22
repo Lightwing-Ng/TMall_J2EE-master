@@ -1,9 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@include file="../include/admin/adminHeader.jsp" %>
-<%@include file="../include/admin/adminNavigator.jsp" %>
-
+<%@ include file="../include/admin/adminHeader.jsp" %>
+<%@ include file="../include/admin/adminNavigator.jsp" %>
 
 <title>编辑产品</title>
 
@@ -36,8 +35,10 @@
                 <table class="editTable">
                     <tr>
                         <td>产品名称</td>
-                        <td><input id="name" name="name" value="${p.name}"
-                                   type="text" class="form-control"></td>
+                        <td>
+                            <input id="name" name="name" value="${p.name}"
+                                   type="text" class="form-control">
+                        </td>
                     </tr>
                     <tr>
                         <td>产品小标题</td>
